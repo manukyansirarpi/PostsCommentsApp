@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
+import Replies from '../replies/Relplies';
 import { capitalize } from '../../utils/utils';
 import { CommentI } from './commentsSlice';
 import styles from './Comments.module.css';
@@ -28,6 +29,7 @@ const CommentItem: React.FC<CommentI>  = ({id, name, body, email}) => {
                         secondary={capitalize(body)}
                     />
                 </ListItem>
+                <Replies commentId={id}></Replies>
             </CardContent>
         </Card>
     ); 
