@@ -1,0 +1,13 @@
+.commentItemWrapper {
+    margin: 0px 0px 20px;
+}
+
+.authorTitle {
+    color: #a688eb;
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
+ }
+ .authorTitle:hover {
+     cursor: pointer;
+ }
