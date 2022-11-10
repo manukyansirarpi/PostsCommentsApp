@@ -1,4 +1,6 @@
+import { CommentI } from "../components/comments/commentsSlice";
 import { PostI } from "../components/posts/postsSlice";
+import { TagI } from "../components/tags/tagsSlice";
 import { UserI } from "../components/users/usersSlice";
 
 export const capitalize = (str: string): string => {
@@ -23,4 +25,12 @@ export const searchPosts = (posts: PostI[], users: UserI[], query: string ): Pos
 
 export const getUserById = (users: UserI[], id: number): UserI => {
     return users.filter(u => u.id === id)[0];
+}
+
+export const getCommentsTags = (tags: TagI[], comment: CommentI): TagI[] => {
+    return tags.filter(t => comment.tagIds?.includes(t.id));
+}
+
+export const searchtags = (tags:  TagI[], query: string ): TagI[] => {
+    return tags.filter(tag => tag.text.toLowerCase().includes(query.toLowerCase()));
 }

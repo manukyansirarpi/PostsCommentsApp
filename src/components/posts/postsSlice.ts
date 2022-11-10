@@ -11,14 +11,14 @@ export interface PostI {
 
 export interface PostsState {
   data: PostI[];
-  currentPostId: number;
+  currentPostId: number | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: PostsState = {
   data: [],
-  currentPostId: 0,
+  currentPostId: null,
   loading: false,
   error: null
 };
@@ -35,7 +35,7 @@ export const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    setCurrentPostId: (state,  action: PayloadAction<number>) => {
+    setCurrentPostId: (state,  action: PayloadAction<number | null>) => {
       state.currentPostId = action.payload;
     },
   },

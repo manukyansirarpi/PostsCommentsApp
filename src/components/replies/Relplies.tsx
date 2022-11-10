@@ -19,7 +19,7 @@ const Replies: React.FC<{commentId: number}> = ({commentId}) => {
     };
 
     const onAddReply = (e: any) => {
-        if (e.key === 'Enter' && e.target.value) {
+        if (e.key === 'Enter' && e.target.value && e.target.value.trim().length > 0) {
             dispatch(replyToComment(
                 [{id,  commentId,  name: currentUser.name, text: e.target.value  }])
             );

@@ -34,7 +34,7 @@ const PostItem: React.FC<PostI> = ({id, title, body, userId}) => {
                     <React.Fragment>
                         {capitalize(body)}
                         <Typography component={'span'}  className={styles.authorTitle}  >
-                            { user && user.name }
+                            { user && user.username }
                         </Typography>
                     </React.Fragment>
                 }

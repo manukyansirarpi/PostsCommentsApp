@@ -8,9 +8,12 @@ export interface CommentI {
   name: string;
   email: string;
   body: string;
+  tagIds: number[] 
 }
 
 export interface PostsComments {
+  // key is post Id
+  // value is comments data per post id
   [key: number]: CommentI[];
 }
 
@@ -38,6 +41,23 @@ export const commentsSlice = createSlice({
   name: 'comments',
   initialState,
   reducers: {
+    addTagToComment: (state, action: PayloadAction<{tagId: number, comment: CommentI}>) => {
+      state.data[action.payload.comment.postId] = state.data[action.payload.comment.postId].map(c=> {
+        if (c.id === action.payload.comment.id) {
+          if(!c.tagIds) c.tagIds = [];
+          c.tagIds.push(action.payload.tagId);
+          return c;
+        } else return c;
+      })
+    },
+    deleteTagFromComment: (state, action: PayloadAction<{tagId: number, comment: CommentI}>) => {
+      state.data[action.payload.comment.postId] = state.data[action.payload.comment.postId].map(c=> {
+        if (c.id === action.payload.comment.id) {
+          c.tagIds = c.tagIds.filter(t => t !== action.payload.tagId);
+          return c;
+        } else return c;
+      })
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -57,6 +77,7 @@ export const commentsSlice = createSlice({
   },
 });
 
+export const { addTagToComment, deleteTagFromComment } = commentsSlice.actions;
 export const selectComments = (state: RootState) => state.comments;
 
 export default commentsSlice.reducer;

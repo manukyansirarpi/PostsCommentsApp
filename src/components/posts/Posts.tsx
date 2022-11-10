@@ -9,7 +9,7 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { getPostsAsync, selectPosts, PostI } from './postsSlice';
+import { getPostsAsync, selectPosts, PostI, setCurrentPostId } from './postsSlice';
 import { selectUsers } from '../users/usersSlice';
 
 import { searchPosts } from '../../utils/utils';
@@ -28,6 +28,9 @@ const Posts: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setQuery(e.target.value);
+    if(e.target.value.length > 0) {
+      dispatch(setCurrentPostId(null))
+    }
   }; 
 
   useEffect(()=>{

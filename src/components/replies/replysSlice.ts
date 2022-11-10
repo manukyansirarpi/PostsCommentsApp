@@ -9,6 +9,8 @@ export interface ReplyI {
 }
 
 export interface CommentReplies {
+  // key is comment Id
+  // value is replis data per comment id
   [key: number]: ReplyI[];
 }
 
