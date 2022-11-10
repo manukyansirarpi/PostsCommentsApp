@@ -3,6 +3,7 @@ import React, { useEffect, useState, useMemo }  from 'react';
 import { StyledEngineProvider } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
@@ -56,6 +57,9 @@ const Posts: React.FC = () => {
   return (
     <StyledEngineProvider injectFirst>
         <Card>
+            <Typography gutterBottom variant="h4" component="div">
+              Posts
+            </Typography>
             <TextField fullWidth id="search-posts" label="Search posts" variant="standard" value={query} onChange={handleChange} />
             <List>
                 {postsList.length >0 ? postsList: <div>No posts found</div>}

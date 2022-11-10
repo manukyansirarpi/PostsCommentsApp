@@ -23,6 +23,13 @@ const Comments: React.FC = () => {
     }   
   }, [currentPost, dispatch]);
 
+  useEffect(()=>{
+    if(currentPost) {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    }   
+  }, [currentPost, dispatch]);
+
+
     if(loading ) {
         return (
             <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center" >
